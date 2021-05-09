@@ -20,6 +20,8 @@ export class OpenWeatherAPI {
 
     const json = (await resp.json()) as any;
 
+    console.log(json)
+
     return {
       status: "ok",
       data: {
@@ -27,7 +29,7 @@ export class OpenWeatherAPI {
         main: {
           temp: json.main.temp,
           feelslike: json.main.feelslike,
-          tempmin:  json.main.tempmin,
+          temp_min:  json.main.temp_min,
           temp_max: json.main.temp_max,
           pressure: json.main.pressure,
           humidity: json.main.humidity

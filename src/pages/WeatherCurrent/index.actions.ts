@@ -24,7 +24,7 @@ export type CurrentWeatherActions =
   | SetCurrentWeatherErrorAction
 
 // Action creators
-export const getCurrentWeather = (payload: string): GetCurrentWeatherDataAction => {
+export const getCurrentWeatherData = (payload: string): GetCurrentWeatherDataAction => {
   return { type: "GET_CURRENT_WEATHER_DATA", payload}
 }
 

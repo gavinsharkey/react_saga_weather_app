@@ -3,13 +3,13 @@ import { GetCurrentWeatherDataAction, setCurrentWeatherData, setCurrentWeatherEr
 import { OpenWeatherAPI } from '../../api'
 
 function* fetchCurrentWeather(action: GetCurrentWeatherDataAction): any {
-   const api = new OpenWeatherAPI()
-   const data = yield call(api.getCurrent, action.payload);
+  const api = new OpenWeatherAPI()
+  const data = yield call(api.getCurrent.bind(api), action.payload);
 
   if (data.status === "error") {
     yield put(setCurrentWeatherError())
   } else {
-    yield put(setCurrentWeatherData(data))
+    yield put(setCurrentWeatherData({ data: data.data, city: data.city }))
   }
 }
 

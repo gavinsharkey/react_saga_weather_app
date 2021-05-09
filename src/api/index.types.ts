@@ -3,7 +3,7 @@ export interface IWeather {
   main: {
     temp: number;
     feelslike: number;
-    tempmin: number;
+    temp_min: number;
     temp_max: number;
     pressure: number;
     humidity: number;

@@ -3,7 +3,7 @@ import { CurrentWeatherActions } from "./index.actions";
 
 export interface ICurrentWeatherState {
   status: "error" | "ok" | "loading";
-  data: ICurrentResponse | {};
+  data: Partial<ICurrentResponse>;
 }
 
 const initialState: ICurrentWeatherState = {
