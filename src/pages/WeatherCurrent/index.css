@@ -1,0 +1,12 @@
+.current-weather-content h1.temperature {
+  font-size: 6rem;
+}
+
+.current-weather-content p.location {
+  font-size: 1.5rem
+}
+
+.current-weather-content h1, .current-weather-content h2, .current-weather-content h3, .current-weather-content p {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
