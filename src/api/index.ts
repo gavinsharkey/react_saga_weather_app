@@ -10,7 +10,7 @@ export class OpenWeatherAPI {
     options = {}
   ): Promise<(ICurrentResponse & IStatusInterface) | IStatusInterface> {
     const resp = await fetch(
-      this.getUrl(`/weather?q=${city}`),
+      this.getUrl(`/weather?units=imperial&q=${city}`),
       this.getOptions(options)
     );
 
@@ -34,7 +34,7 @@ export class OpenWeatherAPI {
           pressure: json.main.pressure,
           humidity: json.main.humidity
         },
-        summary: json.weather.main,
+        summary: json.weather[0].main,
       },
       city: {
         id: json.sys.id,
@@ -51,7 +51,7 @@ export class OpenWeatherAPI {
     options = {}
   ): Promise<(IForecaseResponse & IStatusInterface) | IStatusInterface> {
     const resp = await fetch(
-      this.getUrl(`/forecast?q=${city}`),
+      this.getUrl(`/forecast?units=imperial&q=${city}`),
       this.getOptions(options)
     );
 

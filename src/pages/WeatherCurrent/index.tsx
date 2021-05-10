@@ -4,6 +4,7 @@ import { getCurrentWeatherData } from './index.actions'
 import "./index.css";
 import { IRootState } from '../../index.reducer';
 import { ICurrentWeatherState } from './index.reducer';
+import { getTimeInfoFromTimestamp } from '../../utilities'
 
 const WeatherCurrent = () => {
   const dispatch = useDispatch()
@@ -13,6 +14,28 @@ const WeatherCurrent = () => {
     dispatch(getCurrentWeatherData('San Francisco'))
   }, [dispatch])
 
+  const { time, timezone } = getTimeInfoFromTimestamp(data?.date || Date.now())
+
+  if (status === "loading") {
+    return (
+      <div className="card has-background-white p-4">
+        <div className="card-content">
+          <div className="has-background-light block loading-large"></div>
+          <div className="has-background-light block loading-small"></div>
+          <div className="has-background-light block loading-small"></div>
+        </div>
+      </div>
+    )
+  }
+
+  if (status === 'error') {
+    return <div className="card has-background-white p-4">
+      <div className="card-content is-flex is-justify-content-center is-align-content-center">
+        <h3 className="has-text-weight-semibold">There was an error loading your weather!</h3>
+      </div>
+    </div>
+  }
+
   return (
     <div className="card has-background-white p-4">
       <div className="card-content">
@@ -21,7 +44,7 @@ const WeatherCurrent = () => {
             <p className="location has-text-weight-semibold">
               Weather in {city?.name}, {city?.country}
             </p>
-            <p className="subtitle is-5 has-text-dark">As of 12:30 PM CDT</p>
+            <p className="subtitle is-5 has-text-dark">As of {time}, {timezone}</p>
             <h1 className="title temperature">{data?.main.temp}°</h1>
             <h2 className="subtitle">{data?.summary}</h2>
           </div>

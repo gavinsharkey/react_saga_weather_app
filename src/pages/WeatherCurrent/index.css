@@ -10,3 +10,11 @@
   margin-top: 0.25rem;
   margin-bottom: 0;
 }
+
+.loading-large {
+  height: 25px
+}
+
+.loading-small {
+  height: 15px;
+}
